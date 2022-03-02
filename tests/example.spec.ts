@@ -1,4 +1,6 @@
 import { test, expect, Page } from "@playwright/test";
+import { MainPage } from "../page-objects/main-page";
+import { ABTestPage } from "../page-objects/ab-test-page";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("https://the-internet.herokuapp.com");
@@ -6,10 +8,10 @@ test.beforeEach(async ({ page }) => {
 
 test.describe("AB Test", () => {
   test("should allow me to go to the AB test site", async ({ page }) => {
-    await page.locator("a[href='/abtest']").click();
-    await expect(page.locator("p")).toHaveText(
-      "Also known as split testing. This is a way in which businesses are able to simultaneously test and learn different versions of a page to see which text and/or functionality works best towards a desired outcome (e.g. a user action such as a click-through)."
-    );
+    const mainPage = new MainPage(page);
+    await mainPage.abTest();
+    const aBTestPage = new ABTestPage(page);
+    await aBTestPage.pageContents();
   });
 });
 
