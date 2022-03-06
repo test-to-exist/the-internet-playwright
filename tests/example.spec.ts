@@ -1,13 +1,15 @@
-import { test, expect, Page } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { MainPage } from "../page-objects/main-page";
 import { ABTestPage } from "../page-objects/ab-test-page";
+import { AddRemoveElementsPage } from "../page-objects/add-remove-elements-page";
+
 
 test.beforeEach(async ({ page }) => {
   await page.goto("https://the-internet.herokuapp.com");
 });
 
 test.describe("AB Test", () => {
-  test("should allow me to go to the AB test site", async ({ page }) => {
+  test("should be able to go to the AB test site", async ({ page }) => {
     const mainPage = new MainPage(page);
     await mainPage.abTest();
     const aBTestPage = new ABTestPage(page);
@@ -15,35 +17,39 @@ test.describe("AB Test", () => {
   });
 });
 
-// async function createDefaultTodos(page: Page) {
-//   for (const item of TODO_ITEMS) {
-//     await page.locator('.new-todo').fill(item);
-//     await page.locator('.new-todo').press('Enter');
-//   }
-// }
+test.describe("Add/Remove Elements Test", () => {
 
-async function checkNumberOfTodosInLocalStorage(page: Page, expected: number) {
-  return await page.waitForFunction((e) => {
-    return JSON.parse(localStorage["react-todos"]).length === e;
-  }, expected);
-}
+  test("should be able to go to the \"Add/Remove Elements\" page", async ({ page }) => {
+    const mainPage = new MainPage(page);
+    await mainPage.addRemoveElements();
+    const addRemoveElementsPage = new AddRemoveElementsPage(page);
+    await expect(addRemoveElementsPage.addElementButton).toBeVisible();
+    await expect(addRemoveElementsPage.deleteElementButton).not.toBeVisible();
+  });
 
-async function checkNumberOfCompletedTodosInLocalStorage(
-  page: Page,
-  expected: number
-) {
-  return await page.waitForFunction((e) => {
-    return (
-      JSON.parse(localStorage["react-todos"]).filter((i) => i.completed)
-        .length === e
-    );
-  }, expected);
-}
+  test("should be able to add and remove one element", async ({ page }) => {
+    const mainPage = new MainPage(page);
+    await mainPage.addRemoveElements();
+    const addRemoveElementsPage = new AddRemoveElementsPage(page);
+    await addRemoveElementsPage.addElement();
+    await expect(addRemoveElementsPage.deleteElementButton).toBeVisible();
+    await addRemoveElementsPage.deleteElement();
+    await expect(addRemoveElementsPage.deleteElementButton).not.toBeVisible();
+  });
 
-async function checkTodosInLocalStorage(page: Page, title: string) {
-  return await page.waitForFunction((t) => {
-    return JSON.parse(localStorage["react-todos"])
-      .map((i) => i.title)
-      .includes(t);
-  }, title);
-}
+  test("should be able to add and remove two elements", async ({ page }) => {
+    const mainPage = new MainPage(page);
+    await mainPage.addRemoveElements();
+    const addRemoveElementsPage = new AddRemoveElementsPage(page);
+    await addRemoveElementsPage.addElement();
+    await expect(addRemoveElementsPage.deleteElementButton).toHaveCount(1);
+    await addRemoveElementsPage.addElement();
+    await expect(addRemoveElementsPage.deleteElementButton).toHaveCount(2);
+    await addRemoveElementsPage.deleteElement();
+    await expect(addRemoveElementsPage.deleteElementButton).toHaveCount(1);
+    await addRemoveElementsPage.deleteElement();
+    await expect(addRemoveElementsPage.deleteElementButton).not.toBeVisible();
+  });
+
+});
+

@@ -13,7 +13,7 @@ export class ABTestPage {
   }
 
   async pageContents() {
-    await expect(this.abTestHeading).toHaveText("A/B Test Variation 1");
+    await expect(this.abTestHeading).toContainText("A/B Test");
     await expect(this.abTestParagraph).toHaveText(
       "Also known as split testing. This is a way in which businesses are able to simultaneously test and learn different versions of a page to see which text and/or functionality works best towards a desired outcome (e.g. a user action such as a click-through)."
     );
