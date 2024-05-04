@@ -37,7 +37,7 @@ const config: PlaywrightTestConfig = {
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on',
     launchOptions: {
       slowMo: 1000,
     },
@@ -50,23 +50,23 @@ const config: PlaywrightTestConfig = {
       use: {
         ...devices['Desktop Chrome'],
       },
-    // },
+    },
 
-    // {
-    //   name: 'firefox',
-    //   use: {
-    //     ...devices['Desktop Firefox'],
-    //   },
-    // },
+    {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+      },
+    },
 
     // {
     //   name: 'webkit',
     //   use: {
     //     ...devices['Desktop Safari'],
     //   },
-    },
+    // },
 
-    /* Test against mobile viewports. */
+    // /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: {
@@ -80,7 +80,7 @@ const config: PlaywrightTestConfig = {
     //   },
     // },
 
-    /* Test against branded browsers. */
+    // /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
     //   use: {

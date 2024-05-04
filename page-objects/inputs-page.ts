@@ -10,6 +10,6 @@ export class InputsPage {
   }
 
   async fillInput(value: string) {
-    this.numberInput.type(value);
+     await this.numberInput.fill(value);
   }
 }
