@@ -9,9 +9,9 @@ export class MainPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.abTestLink = page.locator("a[href='/abtest']");
-    this.addRemoveElementsLink = page.locator("a[href='/add_remove_elements/']");
-    this.inputsLink = page.locator("a[href='/inputs']").first();
+    this.abTestLink = page.getByRole('link', {name: 'A/B Testing'});
+    this.addRemoveElementsLink = page.getByRole('link', { name: 'Add/Remove Elements' })
+    this.inputsLink = page.getByRole('link', {name: 'Inputs'});
   }
 
   async abTest() {
