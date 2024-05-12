@@ -1,16 +1,15 @@
-import { expect, test } from "@playwright/test";
-import { AddRemoveElementsPage } from "@pages/add-remove-elements-page";
-import { MainPage } from "@pages/main-page";
+import { expect, test } from '@playwright/test';
+import { AddRemoveElementsPage } from '@pages/add-remove-elements-page';
+import { MainPage } from '@pages/main-page';
 
-test.describe.configure({mode: 'parallel'});
+test.describe.configure({ mode: 'parallel' });
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("https://the-internet.herokuapp.com");
+  await page.goto('https://the-internet.herokuapp.com');
 });
 
-test.describe("Add/Remove Elements Tests", () => {
-
-  test("User should be able to go to the \"Add/Remove Elements\" page", async ({ page }) => {
+test.describe('Add/Remove Elements Tests', () => {
+  test('User should be able to go to the "Add/Remove Elements" page', async ({ page }) => {
     const mainPage = new MainPage(page);
     await mainPage.addRemoveElements();
     const addRemoveElementsPage = new AddRemoveElementsPage(page);
@@ -18,7 +17,7 @@ test.describe("Add/Remove Elements Tests", () => {
     await expect(addRemoveElementsPage.deleteElementButton).not.toBeVisible();
   });
 
-  test("User should be able to add and remove one element", async ({ page }) => {
+  test('User should be able to add and remove one element', async ({ page }) => {
     const mainPage = new MainPage(page);
     await mainPage.addRemoveElements();
     const addRemoveElementsPage = new AddRemoveElementsPage(page);
@@ -28,7 +27,7 @@ test.describe("Add/Remove Elements Tests", () => {
     await expect(addRemoveElementsPage.deleteElementButton).not.toBeVisible();
   });
 
-  test("User should be able to add and remove two elements", async ({ page }) => {
+  test('User should be able to add and remove two elements', async ({ page }) => {
     const mainPage = new MainPage(page);
     await mainPage.addRemoveElements();
     const addRemoveElementsPage = new AddRemoveElementsPage(page);

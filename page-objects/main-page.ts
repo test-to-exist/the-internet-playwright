@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from '@playwright/test';
 
 export class MainPage {
   readonly page: Page;
@@ -6,12 +6,11 @@ export class MainPage {
   readonly addRemoveElementsLink: Locator;
   readonly inputsLink: Locator;
 
-
   constructor(page: Page) {
     this.page = page;
-    this.abTestLink = page.getByRole('link', {name: 'A/B Testing'});
-    this.addRemoveElementsLink = page.getByRole('link', { name: 'Add/Remove Elements' })
-    this.inputsLink = page.getByRole('link', {name: 'Inputs'});
+    this.abTestLink = page.getByRole('link', { name: 'A/B Testing' });
+    this.addRemoveElementsLink = page.getByRole('link', { name: 'Add/Remove Elements' });
+    this.inputsLink = page.getByRole('link', { name: 'Inputs' });
   }
 
   async abTest() {

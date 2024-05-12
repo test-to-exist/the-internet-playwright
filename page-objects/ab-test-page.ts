@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from '@playwright/test';
 
 export class ABTestPage {
   readonly page: Page;
@@ -8,8 +8,8 @@ export class ABTestPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.abTestHeading = page.locator("h3");
-    this.abTestParagraph = page.locator("p");
+    this.abTestHeading = page.locator('h3');
+    this.abTestParagraph = page.locator('p');
   }
 
   // async pageContents() {

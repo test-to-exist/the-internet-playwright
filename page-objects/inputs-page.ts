@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page } from '@playwright/test';
 
 export class InputsPage {
   readonly page: Page;
@@ -10,6 +10,6 @@ export class InputsPage {
   }
 
   async fillInput(value: string) {
-     await this.numberInput.fill(value);
+    await this.numberInput.fill(value);
   }
 }

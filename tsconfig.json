@@ -1,9 +1,8 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./",
-        "paths": {
-          "@pages/*": ["page-objects/*"]
-        }
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@pages/*": ["page-objects/*"]
     }
-
+  }
 }

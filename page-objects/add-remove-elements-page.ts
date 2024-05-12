@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from '@playwright/test';
 
 export class AddRemoveElementsPage {
   readonly page: Page;
@@ -14,7 +14,6 @@ export class AddRemoveElementsPage {
   async addElement() {
     await this.addElementButton.first().click();
   }
-
 
   async deleteElement() {
     await this.deleteElementButton.first().click();
