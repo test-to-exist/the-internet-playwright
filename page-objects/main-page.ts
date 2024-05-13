@@ -6,6 +6,7 @@ export class MainPage {
   readonly addRemoveElementsLink: Locator;
   readonly inputsLink: Locator;
   readonly brokenImagesLink: Locator;
+  readonly checkboxesLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,6 +14,7 @@ export class MainPage {
     this.addRemoveElementsLink = page.getByRole('link', { name: 'Add/Remove Elements' });
     this.inputsLink = page.getByRole('link', { name: 'Inputs' });
     this.brokenImagesLink = page.getByRole('link', { name: 'Broken Images' }); 
+    this.checkboxesLink = page.getByRole('link', { name: 'Checkboxes' }); 
   }
 
   async abTest() {
@@ -29,5 +31,9 @@ export class MainPage {
 
   async brokenImages() {
     await this.brokenImagesLink.click();
+  }
+
+  async checkboxes() {
+    await this.checkboxesLink.click();
   }
 }

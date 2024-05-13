@@ -3,7 +3,7 @@ import { InputsPage } from '@pages/inputs-page';
 import { MainPage } from '@pages/main-page';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://the-internet.herokuapp.com');
+  await page.goto(process.env.BASE_URL);
   const mainPage = new MainPage(page);
   await mainPage.inputs();
 });

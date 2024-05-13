@@ -2,10 +2,8 @@ import { expect, test } from '@playwright/test';
 import { AddRemoveElementsPage } from '@pages/add-remove-elements-page';
 import { MainPage } from '@pages/main-page';
 
-test.describe.configure({ mode: 'parallel' });
-
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://the-internet.herokuapp.com');
+  await page.goto(process.env.BASE_URL);
   const mainPage = new MainPage(page);
   await mainPage.addRemoveElements();
 });
