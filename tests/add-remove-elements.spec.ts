@@ -5,7 +5,7 @@ import { MainPage } from '@pages/main-page';
 test.beforeEach(async ({ page }) => {
   await page.goto(process.env.BASE_URL);
   const mainPage = new MainPage(page);
-  await mainPage.addRemoveElements();
+  await mainPage.addRemoveElementsLink.click();
 });
 
 test.describe('Add/Remove Elements Tests', () => {

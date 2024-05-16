@@ -1,4 +1,8 @@
 import { expect, Locator, Page } from '@playwright/test';
+import { ABTestPage } from './ab-test-page';
+import { relative } from 'path';
+import { CheckboxesPage } from './checkboxes-page';
+import { ContextMenuPage } from './context-menu-page';
 
 export class MainPage {
   readonly page: Page;
@@ -7,6 +11,7 @@ export class MainPage {
   readonly inputsLink: Locator;
   readonly brokenImagesLink: Locator;
   readonly checkboxesLink: Locator;
+  readonly contextMenuLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,25 +20,21 @@ export class MainPage {
     this.inputsLink = page.getByRole('link', { name: 'Inputs' });
     this.brokenImagesLink = page.getByRole('link', { name: 'Broken Images' }); 
     this.checkboxesLink = page.getByRole('link', { name: 'Checkboxes' }); 
+    this.contextMenuLink = page.getByRole('link', { name: 'Context Menu' }); 
   }
 
-  async abTest() {
+  async abTest() : Promise<ABTestPage> {
     await this.abTestLink.click();
-  }
-
-  async addRemoveElements() {
-    await this.addRemoveElementsLink.click();
-  }
-
-  async inputs() {
-    await this.inputsLink.click();
-  }
-
-  async brokenImages() {
-    await this.brokenImagesLink.click();
+    return new ABTestPage(this.page);
   }
 
   async checkboxes() {
     await this.checkboxesLink.click();
+    return new CheckboxesPage(this.page);
+  }
+
+  async contextMenu() {
+    await this.contextMenuLink.click();
+    return new ContextMenuPage(this.page);
   }
 }

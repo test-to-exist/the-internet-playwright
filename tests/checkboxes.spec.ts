@@ -2,15 +2,12 @@ import { CheckboxesPage } from "@pages/checkboxes-page";
 import { MainPage } from "@pages/main-page";
 import { expect, test } from "@playwright/test";
 
-test.beforeEach(async ({page}) => {
-    await page.goto(process.env.BASE_URL);
-    const mainPage = new MainPage(page);
-    await mainPage.checkboxes();
-})
-
 test.describe('Checkboxes Tests', ()=> {
     test('User should be able to check and uncheck checkboxes', async ({page})=>{
-        const checkboxesPage = new CheckboxesPage(page);
+        await page.goto(process.env.BASE_URL);
+        const mainPage = new MainPage(page);
+        const checkboxesPage = await mainPage.checkboxes();
+        
         await expect(checkboxesPage.checkbox1).not.toBeChecked();
         await expect(checkboxesPage.checkbox2).toBeChecked();
         await checkboxesPage.checkbox1.check();
