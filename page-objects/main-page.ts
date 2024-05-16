@@ -1,6 +1,5 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { ABTestPage } from './ab-test-page';
-import { relative } from 'path';
 import { CheckboxesPage } from './checkboxes-page';
 import { ContextMenuPage } from './context-menu-page';
 

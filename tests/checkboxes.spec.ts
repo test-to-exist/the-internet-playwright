@@ -1,4 +1,3 @@
-import { CheckboxesPage } from "@pages/checkboxes-page";
 import { MainPage } from "@pages/main-page";
 import { expect, test } from "@playwright/test";
 
