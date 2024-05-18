@@ -39,4 +39,9 @@ export class MainPage {
     await this.contextMenuLink.click();
     return new ContextMenuPage(this.page);
   }
+  
+  async challengingDom() {
+    await this.challengingDomLink.click();
+    return new ChallengingDomPage(this.page);
+  }
 }
