@@ -3,6 +3,7 @@ import { ABTestPage } from './ab-test-page';
 import { CheckboxesPage } from './checkboxes-page';
 import { ContextMenuPage } from './context-menu-page';
 import { ChallengingDomPage } from './challenging-dom-page';
+import { BrokenImagesPage } from './broken-images-page';
 
 export class MainPage {
   readonly page: Page;
@@ -38,6 +39,11 @@ export class MainPage {
   async contextMenu() {
     await this.contextMenuLink.click();
     return new ContextMenuPage(this.page);
+  }
+
+  async brokenImages() {
+    await this.brokenImagesLink.click();
+    return new BrokenImagesPage(this.page);
   }
   
   async challengingDom() {
