@@ -2,6 +2,7 @@ import { Locator, Page } from '@playwright/test';
 import { ABTestPage } from './ab-test-page';
 import { CheckboxesPage } from './checkboxes-page';
 import { ContextMenuPage } from './context-menu-page';
+import { ChallengingDomPage } from './challenging-dom-page';
 
 export class MainPage {
   readonly page: Page;
@@ -11,6 +12,7 @@ export class MainPage {
   readonly brokenImagesLink: Locator;
   readonly checkboxesLink: Locator;
   readonly contextMenuLink: Locator;
+  readonly challengingDomLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -19,7 +21,8 @@ export class MainPage {
     this.inputsLink = page.getByRole('link', { name: 'Inputs' });
     this.brokenImagesLink = page.getByRole('link', { name: 'Broken Images' }); 
     this.checkboxesLink = page.getByRole('link', { name: 'Checkboxes' }); 
-    this.contextMenuLink = page.getByRole('link', { name: 'Context Menu' }); 
+    this.contextMenuLink = page.getByRole('link', { name: 'Context Menu' });
+    this.challengingDomLink = page.getByRole('link', {name: 'Challenging DOM'}) 
   }
 
   async abTest() : Promise<ABTestPage> {
