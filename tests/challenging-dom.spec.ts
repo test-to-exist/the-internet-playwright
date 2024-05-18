@@ -17,7 +17,6 @@ test.describe('Challenging Dom Tests', () => {
   });
 
   test('The table contains specific data', async ({ page }) => {
-    await page.goto(process.env.BASE_URL);
     const challengingDomPage = new ChallengingDomPage(page);
     expect(await challengingDomPage.getCellFromTheTable(0,0).innerText()).toBe('Lorem');
     expect(await challengingDomPage.getCellFromTheTable(0,1).innerText()).toBe('Ipsum');
