@@ -25,8 +25,7 @@ test.describe('Broken Images Tests', () => {
     })
 
     test('The github link and avatar images have proper source' , async ({brokenImagesPage}) => {
-        const images = await brokenImagesPage.getImages();
-        
+        const images = await brokenImagesPage.getImages();    
         const image1Url = await images[0].getAttribute('src');
         const resp1 = await brokenImagesPage.page.request.get(
             `${process.env.BASE_URL}/${image1Url}`);
