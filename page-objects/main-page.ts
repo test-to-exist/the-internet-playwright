@@ -1,9 +1,10 @@
 import { Locator, Page } from '@playwright/test';
-import { ABTestPage } from './ab-test-page';
-import { CheckboxesPage } from './checkboxes-page';
-import { ContextMenuPage } from './context-menu-page';
-import { ChallengingDomPage } from './challenging-dom-page';
-import { BrokenImagesPage } from './broken-images-page';
+import { ABTestPage } from '@pages/ab-test-page';
+import { CheckboxesPage } from '@pages/checkboxes-page';
+import { ContextMenuPage } from '@pages/context-menu-page';
+import { ChallengingDomPage } from '@pages/challenging-dom-page';
+import { BrokenImagesPage } from '@pages/broken-images-page';
+import { DisappearingElementsPage } from '@pages/disappearing-elements/disappearing-elements-page'
 
 export class MainPage {
   readonly page: Page;
@@ -14,6 +15,7 @@ export class MainPage {
   readonly checkboxesLink: Locator;
   readonly contextMenuLink: Locator;
   readonly challengingDomLink: Locator;
+  readonly disappearingElementsLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -24,6 +26,7 @@ export class MainPage {
     this.checkboxesLink = page.getByRole('link', { name: 'Checkboxes' }); 
     this.contextMenuLink = page.getByRole('link', { name: 'Context Menu' });
     this.challengingDomLink = page.getByRole('link', {name: 'Challenging DOM'}) 
+    this.disappearingElementsLink = page.getByRole('link', {name: 'Disappearing Elements'}) 
   }
 
   async abTest() : Promise<ABTestPage> {
@@ -49,5 +52,10 @@ export class MainPage {
   async challengingDom() {
     await this.challengingDomLink.click();
     return new ChallengingDomPage(this.page);
+  }
+
+  async dissappearringElements(){
+    await this.disappearingElementsLink.click();
+    return new DisappearingElementsPage(this.page);
   }
 }
