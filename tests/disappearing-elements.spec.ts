@@ -11,45 +11,38 @@ const test = base.extend<{dissappearringElementsPage: DisappearingElementsPage}>
     }
 })
 
-test('User is redirected to home page after clicking "Home" link',
- async ({dissappearringElementsPage}) => {
-    await dissappearringElementsPage.homeButton.click();
-    await expect(
-        dissappearringElementsPage.page.getByRole('heading', {name: 'Welcome to the-internet'}))
-        .toBeVisible();
-})
+test.describe('DisappearingElements Tests',() => {
+    test('User is redirected to home page after clicking "Home" link',
+    async ({dissappearringElementsPage}) => {
+        const mainPage = await dissappearringElementsPage.home()
+        await expect(mainPage.header).toBeVisible();
+    })
 
-test('User is redirected to "Not found" page after clicking "About" link',
- async ({dissappearringElementsPage}) => {
-    await dissappearringElementsPage.aboutButton.click();
-    await expect(
-        dissappearringElementsPage.page.getByRole('heading', {name: 'Not Found'}))
-        .toBeVisible();
-})
+    test('User is redirected to "Not found" page after clicking "About" link',
+    async ({dissappearringElementsPage}) => {
+        const aboutPage = await dissappearringElementsPage.about();
+        await expect(aboutPage.header).toBeVisible();
+    })
 
+    test('User is redirected to "Not found" page after clicking "Contact us" link',
+    async ({dissappearringElementsPage}) => {
+        const contactUsPage = await dissappearringElementsPage.contactUs();
+        await expect(contactUsPage.header).toBeVisible();
+    })
 
-test('User is redirected to "Not found" page after clicking "Contact us" link',
- async ({dissappearringElementsPage}) => {
-    await dissappearringElementsPage.contactUsButton.click();
-    await expect(
-        dissappearringElementsPage.page.getByRole('heading', {name: 'Not Found'}))
-        .toBeVisible();
-})
+    test('User is redirected to "Not found" page after clicking "Portfolio" link',
+    async ({dissappearringElementsPage}) => {
+        const portfolioPage = await dissappearringElementsPage.portfolio();
+        await expect(portfolioPage.header).toBeVisible();
+    })
 
-test('User is redirected to "Not found" page after clicking "Portfolio" link',
- async ({dissappearringElementsPage}) => {
-    await dissappearringElementsPage.portfolioButton.click();
-    await expect(
-        dissappearringElementsPage.page.getByRole('heading', {name: 'Not Found'}))
-        .toBeVisible();
-})
+    //Commented because this one element is dissapearing (The Gallery link)
 
-//Commented because this one element is dissapearing (The Gallery link)
-
-// test('User is redirected to "Not found" page after clicking "Gallery" link',
-//  async ({dissappearringElementsPage}) => {
-//     await dissappearringElementsPage.galleryButton.click();
-//     await expect(
-//         dissappearringElementsPage.page.getByRole('heading', {name: 'Not Found'}))
-//         .toBeVisible();
-// })
+    // test('User is redirected to "Not found" page after clicking "Gallery" link',
+    //  async ({dissappearringElementsPage}) => {
+    //     await dissappearringElementsPage.galleryButton.click();
+    //     await expect(
+    //         dissappearringElementsPage.page.getByRole('heading', {name: 'Not Found'}))
+    //         .toBeVisible();
+    // })
+});

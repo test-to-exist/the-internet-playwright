@@ -8,6 +8,7 @@ import { DisappearingElementsPage } from '@pages/disappearing-elements/disappear
 
 export class MainPage {
   readonly page: Page;
+  readonly header: Locator;
   readonly abTestLink: Locator;
   readonly addRemoveElementsLink: Locator;
   readonly inputsLink: Locator;
@@ -19,6 +20,7 @@ export class MainPage {
 
   constructor(page: Page) {
     this.page = page;
+    this.header = page.getByRole('heading', {name: 'Welcome to the-internet'});
     this.abTestLink = page.getByRole('link', { name: 'A/B Testing' });
     this.addRemoveElementsLink = page.getByRole('link', { name: 'Add/Remove Elements' });
     this.inputsLink = page.getByRole('link', { name: 'Inputs' });
