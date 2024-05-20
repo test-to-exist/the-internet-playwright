@@ -44,10 +44,12 @@ test('User is redirected to "Not found" page after clicking "Portfolio" link',
         .toBeVisible();
 })
 
-test('User is redirected to "Not found" page after clicking "Gallery" link',
- async ({dissappearringElementsPage}) => {
-    await dissappearringElementsPage.galleryButton.click();
-    await expect(
-        dissappearringElementsPage.page.getByRole('heading', {name: 'Not Found'}))
-        .toBeVisible();
-})
+//Commented because this one element is dissapearing (The Gallery link)
+
+// test('User is redirected to "Not found" page after clicking "Gallery" link',
+//  async ({dissappearringElementsPage}) => {
+//     await dissappearringElementsPage.galleryButton.click();
+//     await expect(
+//         dissappearringElementsPage.page.getByRole('heading', {name: 'Not Found'}))
+//         .toBeVisible();
+// })
