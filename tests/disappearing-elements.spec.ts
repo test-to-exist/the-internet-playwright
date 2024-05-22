@@ -36,13 +36,20 @@ test.describe('DisappearingElements Tests',() => {
         await expect(portfolioPage.header).toBeVisible();
     })
 
-    //Commented because this one element is dissapearing (The Gallery link)
-
-    // test('User is redirected to "Not found" page after clicking "Gallery" link',
-    //  async ({dissappearringElementsPage}) => {
-    //     await dissappearringElementsPage.galleryButton.click();
-    //     await expect(
-    //         dissappearringElementsPage.page.getByRole('heading', {name: 'Not Found'}))
-    //         .toBeVisible();
-    // })
+    // I don't like this test that much because it depends on element dynamically showing 
+    // I am tempted to skip it 
+    test('The "Gallery" link shows and dissapears randomly',
+     async ({dissappearringElementsPage}) => {
+        let refreshPageCount = 10;
+        let galleryLinkVisibleCount = 0;
+        while(refreshPageCount > 0) {
+            await dissappearringElementsPage.page.reload();
+            if(await dissappearringElementsPage.galleryButton.isVisible()){
+                galleryLinkVisibleCount += 1;
+            }
+            refreshPageCount--;
+        }
+        console.log(`Gallery link appeared ${galleryLinkVisibleCount} times`);
+        expect(galleryLinkVisibleCount).toBeGreaterThan(0);
+    })
 });
