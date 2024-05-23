@@ -5,6 +5,7 @@ import { ContextMenuPage } from '@pages/context-menu-page';
 import { ChallengingDomPage } from '@pages/challenging-dom-page';
 import { BrokenImagesPage } from '@pages/broken-images-page';
 import { DisappearingElementsPage } from '@pages/disappearing-elements/disappearing-elements-page'
+import { DragAndDropPage } from './drag-and-drop-page';
 
 export class MainPage {
   readonly page: Page;
@@ -17,6 +18,7 @@ export class MainPage {
   readonly contextMenuLink: Locator;
   readonly challengingDomLink: Locator;
   readonly disappearingElementsLink: Locator;
+  readonly dragAndDropLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -29,6 +31,7 @@ export class MainPage {
     this.contextMenuLink = page.getByRole('link', { name: 'Context Menu' });
     this.challengingDomLink = page.getByRole('link', {name: 'Challenging DOM'}) 
     this.disappearingElementsLink = page.getByRole('link', {name: 'Disappearing Elements'}) 
+    this.dragAndDropLink = page.getByRole('link', {name: 'Drag and Drop'}) 
   }
 
   async abTest() : Promise<ABTestPage> {
@@ -59,5 +62,10 @@ export class MainPage {
   async dissappearringElements(){
     await this.disappearingElementsLink.click();
     return new DisappearingElementsPage(this.page);
+  }
+
+  async dragAndDrop(){
+    await this.dragAndDropLink.click();
+    return new DragAndDropPage(this.page);
   }
 }
