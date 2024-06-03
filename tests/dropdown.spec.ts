@@ -1,15 +1,22 @@
-import { expect, test } from "@playwright/test";
+import { DropdownPage } from "@pages/dropdown-page";
+import { MainPage } from "@pages/main-page";
+import { expect, test as base } from "@playwright/test";
 
-// TODO - add page + move selectors and add fixture
-test('User is able to select dropdown options', async ({page}) => {
-    await page.goto(`${process.env.BASE_URL}/dropdown`);
-    const dropdown = page.locator('#dropdown');
-    await expect(page.getByRole('option', { name: 'Please select an option' }))
+
+const test = base.extend<{dropdownPage: DropdownPage}>({
+    dropdownPage: async ({page}, use) =>{
+        await page.goto(process.env.BASE_URL);
+        const mainPage = new MainPage(page);
+        const dropdownPage = await mainPage.dropdown();
+        use(dropdownPage);
+    }  
+})
+
+test('User is able to select dropdown options', async ({dropdownPage}) => {
+    await expect(dropdownPage.page.getByRole('option', { name: 'Please select an option' }))
     .toHaveAttribute('selected');
-    await dropdown.selectOption('Option 1')
-    await expect(page.getByRole('option', { name: 'Option 1' }))
-    .toHaveAttribute('selected');
-    await dropdown.selectOption('Option 2')
-    await expect(page.getByRole('option', { name: 'Option 2' }))
-    .toHaveAttribute('selected');
+    await dropdownPage.selectOption('Option 1');
+    await expect(dropdownPage.getOptionByName('Option 1')).toHaveAttribute('selected');
+    await dropdownPage.selectOption('Option 2');
+    await expect(dropdownPage.getOptionByName('Option 2')).toHaveAttribute('selected');
 });

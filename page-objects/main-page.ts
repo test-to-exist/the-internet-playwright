@@ -6,6 +6,7 @@ import { ChallengingDomPage } from '@pages/challenging-dom-page';
 import { BrokenImagesPage } from '@pages/broken-images-page';
 import { DisappearingElementsPage } from '@pages/disappearing-elements/disappearing-elements-page'
 import { DragAndDropPage } from './drag-and-drop-page';
+import { DropdownPage } from './dropdown-page';
 
 export class MainPage {
   readonly page: Page;
@@ -19,6 +20,7 @@ export class MainPage {
   readonly challengingDomLink: Locator;
   readonly disappearingElementsLink: Locator;
   readonly dragAndDropLink: Locator;
+  readonly dropdownLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -29,9 +31,10 @@ export class MainPage {
     this.brokenImagesLink = page.getByRole('link', { name: 'Broken Images' }); 
     this.checkboxesLink = page.getByRole('link', { name: 'Checkboxes' }); 
     this.contextMenuLink = page.getByRole('link', { name: 'Context Menu' });
-    this.challengingDomLink = page.getByRole('link', {name: 'Challenging DOM'}) 
-    this.disappearingElementsLink = page.getByRole('link', {name: 'Disappearing Elements'}) 
-    this.dragAndDropLink = page.getByRole('link', {name: 'Drag and Drop'}) 
+    this.challengingDomLink = page.getByRole('link', {name: 'Challenging DOM'});
+    this.disappearingElementsLink = page.getByRole('link', {name: 'Disappearing Elements'});
+    this.dragAndDropLink = page.getByRole('link', {name: 'Drag and Drop'});
+    this.dropdownLink = page.getByRole('link', {name: 'Dropdown'});
   }
 
   async abTest() : Promise<ABTestPage> {
@@ -67,5 +70,10 @@ export class MainPage {
   async dragAndDrop(){
     await this.dragAndDropLink.click();
     return new DragAndDropPage(this.page);
+  }
+
+  async dropdown(){
+    await this.dropdownLink.click();
+    return new DropdownPage(this.page);
   }
 }
