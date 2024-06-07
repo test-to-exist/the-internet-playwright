@@ -12,8 +12,8 @@ const test = base.extend<{dropdownPage: DropdownPage}>({
     }  
 })
 
-test('User is able to select dropdown options', async ({dropdownPage}) => {
-    await expect(dropdownPage.page.getByRole('option', { name: 'Please select an option' }))
+test('User is able to select dropdown options', async ({dropdownPage, page}) => {
+    await expect(page.getByRole('option', { name: 'Please select an option' }))
     .toHaveAttribute('selected');
     await dropdownPage.selectOption('Option 1');
     await expect(dropdownPage.getOptionByName('Option 1')).toHaveAttribute('selected');

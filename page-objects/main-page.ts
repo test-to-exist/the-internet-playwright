@@ -7,6 +7,7 @@ import { BrokenImagesPage } from '@pages/broken-images-page';
 import { DisappearingElementsPage } from '@pages/disappearing-elements/disappearing-elements-page'
 import { DragAndDropPage } from './drag-and-drop-page';
 import { DropdownPage } from './dropdown-page';
+import { DynamicContentPage } from './dynamic-content-page';
 
 export class MainPage {
   readonly page: Page;
@@ -21,6 +22,7 @@ export class MainPage {
   readonly disappearingElementsLink: Locator;
   readonly dragAndDropLink: Locator;
   readonly dropdownLink: Locator;
+  readonly dynamicContentLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -35,6 +37,7 @@ export class MainPage {
     this.disappearingElementsLink = page.getByRole('link', {name: 'Disappearing Elements'});
     this.dragAndDropLink = page.getByRole('link', {name: 'Drag and Drop'});
     this.dropdownLink = page.getByRole('link', {name: 'Dropdown'});
+    this.dynamicContentLink = page.getByRole('link', {name: 'Dynamic Content'});
   }
 
   async abTest() : Promise<ABTestPage> {
@@ -75,5 +78,10 @@ export class MainPage {
   async dropdown(){
     await this.dropdownLink.click();
     return new DropdownPage(this.page);
+  }
+
+  async dynamicContent(){
+    await this.dynamicContentLink.click();
+    return new DynamicContentPage(this.page);
   }
 }

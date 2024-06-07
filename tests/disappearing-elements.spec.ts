@@ -39,11 +39,11 @@ test.describe('DisappearingElements Tests',() => {
     // I don't like this test that much because it depends on element dynamically showing 
     // I am tempted to skip it 
     test('The "Gallery" link shows and dissapears randomly',
-     async ({dissappearringElementsPage}) => {
+     async ({dissappearringElementsPage, page}) => {
         let refreshPageCount = 10;
         let galleryLinkVisibleCount = 0;
         while(refreshPageCount > 0) {
-            await dissappearringElementsPage.page.reload();
+            await page.reload();
             if(await dissappearringElementsPage.galleryButton.isVisible()){
                 galleryLinkVisibleCount += 1;
             }
