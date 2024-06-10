@@ -6,7 +6,6 @@ export class ChallengingDomPage {
   readonly secondButton: Locator;
   readonly thirdButton: Locator;
 
-
   constructor(page: Page) {
     this.page = page;
     this.firstButton = page.locator('a.button').first();
@@ -14,7 +13,7 @@ export class ChallengingDomPage {
     this.thirdButton = page.locator('a.button').nth(2);
   }
 
-  getCellFromTheTable(rowIdx: number, cellIdx: number) : Locator {
+  getCellFromTheTable(rowIdx: number, cellIdx: number): Locator {
     return this.page.getByRole('row').nth(rowIdx).getByRole('cell').nth(cellIdx);
   }
 }

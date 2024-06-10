@@ -2,14 +2,14 @@ import { expect, test as base } from '@playwright/test';
 import { AddRemoveElementsPage } from '@pages/add-remove-elements-page';
 import { MainPage } from '@pages/main-page';
 
-const test = base.extend<{addRemoveElementsPage: AddRemoveElementsPage}>({
-  addRemoveElementsPage: async ({page}, use) => {
+const test = base.extend<{ addRemoveElementsPage: AddRemoveElementsPage }>({
+  addRemoveElementsPage: async ({ page }, use) => {
     await page.goto(process.env.BASE_URL);
     const mainPage = new MainPage(page);
     await mainPage.addRemoveElementsLink.click();
     const addRemoveElementsPage = new AddRemoveElementsPage(page);
     use(addRemoveElementsPage);
-  }
+  },
 });
 
 test.describe('Add/Remove Elements Tests', () => {

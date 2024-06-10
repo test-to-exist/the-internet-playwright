@@ -15,19 +15,19 @@ export class DisappearingElementsPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.homeButton = page.getByRole('link', {name: 'Home'});
-    this.aboutButton = page.getByRole('link', {name: 'About'});
-    this.contactUsButton = page.getByRole('link', {name: 'Contact us'});
-    this.portfolioButton = page.getByRole('link', {name: 'Portfolio'});
-    this.galleryButton = page.getByRole('link', {name: 'Gallery'});
+    this.homeButton = page.getByRole('link', { name: 'Home' });
+    this.aboutButton = page.getByRole('link', { name: 'About' });
+    this.contactUsButton = page.getByRole('link', { name: 'Contact us' });
+    this.portfolioButton = page.getByRole('link', { name: 'Portfolio' });
+    this.galleryButton = page.getByRole('link', { name: 'Gallery' });
   }
 
-  async home(){
+  async home() {
     await this.homeButton.click();
     return new MainPage(this.page);
   }
 
-  async about(){
+  async about() {
     await this.aboutButton.click();
     return new AboutPage(this.page);
   }
@@ -37,12 +37,12 @@ export class DisappearingElementsPage {
     return new ContactUsPage(this.page);
   }
 
-  async portfolio(){
+  async portfolio() {
     await this.portfolioButton.click();
     return new PortfolioPage(this.page);
   }
 
-  async gallery(){
+  async gallery() {
     await this.galleryButton.click();
     return new GalleryPage(this.page);
   }

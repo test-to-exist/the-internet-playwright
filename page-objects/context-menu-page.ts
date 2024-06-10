@@ -6,11 +6,11 @@ export class ContextMenuPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.hotSpot = page.locator('#hot-spot')
+    this.hotSpot = page.locator('#hot-spot');
   }
 
-  async showContextMenu(){
+  async showContextMenu() {
     await this.hotSpot.hover();
-    await this.hotSpot.click({button: 'right'});
+    await this.hotSpot.click({ button: 'right' });
   }
 }

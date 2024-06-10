@@ -2,14 +2,14 @@ import { ABTestPage } from '@pages/ab-test-page';
 import { MainPage } from '@pages/main-page';
 import { expect, test as base } from '@playwright/test';
 
-const test = base.extend<{aBTestPage: ABTestPage}>({
-  aBTestPage: async ({page}, use) => {
+const test = base.extend<{ aBTestPage: ABTestPage }>({
+  aBTestPage: async ({ page }, use) => {
     await page.goto(process.env.BASE_URL);
-    const mainPage = new MainPage(page);  
+    const mainPage = new MainPage(page);
     const aBTestPage = await mainPage.abTest();
     use(aBTestPage);
-  } 
-})
+  },
+});
 
 test.describe('AB Test', () => {
   test('User should be able to go to the AB test site', async ({ aBTestPage }) => {

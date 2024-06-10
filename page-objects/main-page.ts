@@ -4,7 +4,7 @@ import { CheckboxesPage } from '@pages/checkboxes-page';
 import { ContextMenuPage } from '@pages/context-menu-page';
 import { ChallengingDomPage } from '@pages/challenging-dom-page';
 import { BrokenImagesPage } from '@pages/broken-images-page';
-import { DisappearingElementsPage } from '@pages/disappearing-elements/disappearing-elements-page'
+import { DisappearingElementsPage } from '@pages/disappearing-elements/disappearing-elements-page';
 import { DragAndDropPage } from './drag-and-drop-page';
 import { DropdownPage } from './dropdown-page';
 import { DynamicContentPage } from './dynamic-content-page';
@@ -26,21 +26,21 @@ export class MainPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.header = page.getByRole('heading', {name: 'Welcome to the-internet'});
+    this.header = page.getByRole('heading', { name: 'Welcome to the-internet' });
     this.abTestLink = page.getByRole('link', { name: 'A/B Testing' });
     this.addRemoveElementsLink = page.getByRole('link', { name: 'Add/Remove Elements' });
     this.inputsLink = page.getByRole('link', { name: 'Inputs' });
-    this.brokenImagesLink = page.getByRole('link', { name: 'Broken Images' }); 
-    this.checkboxesLink = page.getByRole('link', { name: 'Checkboxes' }); 
+    this.brokenImagesLink = page.getByRole('link', { name: 'Broken Images' });
+    this.checkboxesLink = page.getByRole('link', { name: 'Checkboxes' });
     this.contextMenuLink = page.getByRole('link', { name: 'Context Menu' });
-    this.challengingDomLink = page.getByRole('link', {name: 'Challenging DOM'});
-    this.disappearingElementsLink = page.getByRole('link', {name: 'Disappearing Elements'});
-    this.dragAndDropLink = page.getByRole('link', {name: 'Drag and Drop'});
-    this.dropdownLink = page.getByRole('link', {name: 'Dropdown'});
-    this.dynamicContentLink = page.getByRole('link', {name: 'Dynamic Content'});
+    this.challengingDomLink = page.getByRole('link', { name: 'Challenging DOM' });
+    this.disappearingElementsLink = page.getByRole('link', { name: 'Disappearing Elements' });
+    this.dragAndDropLink = page.getByRole('link', { name: 'Drag and Drop' });
+    this.dropdownLink = page.getByRole('link', { name: 'Dropdown' });
+    this.dynamicContentLink = page.getByRole('link', { name: 'Dynamic Content' });
   }
 
-  async abTest() : Promise<ABTestPage> {
+  async abTest(): Promise<ABTestPage> {
     await this.abTestLink.click();
     return new ABTestPage(this.page);
   }
@@ -59,28 +59,28 @@ export class MainPage {
     await this.brokenImagesLink.click();
     return new BrokenImagesPage(this.page);
   }
-  
+
   async challengingDom() {
     await this.challengingDomLink.click();
     return new ChallengingDomPage(this.page);
   }
 
-  async dissappearringElements(){
+  async dissappearringElements() {
     await this.disappearingElementsLink.click();
     return new DisappearingElementsPage(this.page);
   }
 
-  async dragAndDrop(){
+  async dragAndDrop() {
     await this.dragAndDropLink.click();
     return new DragAndDropPage(this.page);
   }
 
-  async dropdown(){
+  async dropdown() {
     await this.dropdownLink.click();
     return new DropdownPage(this.page);
   }
 
-  async dynamicContent(){
+  async dynamicContent() {
     await this.dynamicContentLink.click();
     return new DynamicContentPage(this.page);
   }

@@ -11,7 +11,7 @@ export class DragAndDropPage {
     this.columnA = page.locator('#column-a');
   }
 
-  async dragColumnBToColumnA(){
+  async dragColumnBToColumnA() {
     await this.columnB.dragTo(this.columnA);
   }
 }

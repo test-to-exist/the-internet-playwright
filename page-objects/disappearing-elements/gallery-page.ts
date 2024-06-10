@@ -6,6 +6,6 @@ export class GalleryPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.header = page.getByRole('heading', {name: 'Not Found'});
+    this.header = page.getByRole('heading', { name: 'Not Found' });
   }
 }
