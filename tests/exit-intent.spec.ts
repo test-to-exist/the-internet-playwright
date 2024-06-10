@@ -1,7 +1,7 @@
 import { test,  expect } from "@playwright/test";
 
 
-test('User should be able to close Ad modal', async ({ page }) => {
+test('The modal should shown on mouse leaving the viewport', async ({ page }) => {
   await page.goto(`${process.env.BASE_URL}/exit_intent`);
   await page.locator('html').dispatchEvent('mouseleave');
   await expect(page.getByText(
