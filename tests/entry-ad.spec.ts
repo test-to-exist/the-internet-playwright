@@ -1,6 +1,6 @@
 import { EntryAdPage } from "@pages/entry-ad-page";
 import { MainPage } from "@pages/main-page";
-import {test as base,  expect } from "@playwright/test";
+import { test as base,  expect } from "@playwright/test";
 
 
 const test = base.extend<{entryAdPage: EntryAdPage}>({
