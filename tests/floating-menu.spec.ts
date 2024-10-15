@@ -13,7 +13,7 @@ test('After scrolling down the floating menu is still visible', async ({ page })
   await expect(aboutLink).toBeVisible();
 
   const scrollHeight = await page.evaluate(() => {
-    return window.document.documentElement.scrollHeight;
+    return window.document.body.scrollHeight;
   });
 
   await page.mouse.wheel(0, scrollHeight);
