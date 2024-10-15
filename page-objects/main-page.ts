@@ -5,10 +5,11 @@ import { ContextMenuPage } from '@pages/context-menu-page';
 import { ChallengingDomPage } from '@pages/challenging-dom-page';
 import { BrokenImagesPage } from '@pages/broken-images-page';
 import { DisappearingElementsPage } from '@pages/disappearing-elements/disappearing-elements-page';
-import { DragAndDropPage } from './drag-and-drop-page';
-import { DropdownPage } from './dropdown-page';
-import { DynamicContentPage } from './dynamic-content-page';
-import { EntryAdPage } from './entry-ad-page';
+import { DragAndDropPage } from '@pages/drag-and-drop-page';
+import { DropdownPage } from '@pages/dropdown-page';
+import { DynamicContentPage } from '@pages/dynamic-content-page';
+import { EntryAdPage } from '@pages/entry-ad-page';
+import { FloatingMenuPage } from '@pages/floating-menu-page';
 
 export class MainPage {
   readonly page: Page;
@@ -25,6 +26,7 @@ export class MainPage {
   readonly dropdownLink: Locator;
   readonly dynamicContentLink: Locator;
   readonly entryAdLink: Locator;
+  readonly floatingMenuLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -40,7 +42,8 @@ export class MainPage {
     this.dragAndDropLink = page.getByRole('link', { name: 'Drag and Drop' });
     this.dropdownLink = page.getByRole('link', { name: 'Dropdown' });
     this.dynamicContentLink = page.getByRole('link', { name: 'Dynamic Content' });
-    this.entryAdLink = page.getByRole('link', {name: 'Entry Ad'});
+    this.entryAdLink = page.getByRole('link', { name: 'Entry Ad' });
+    this.floatingMenuLink = page.getByRole('link', { name: 'Floating Menu' });
   }
 
   async abTest(): Promise<ABTestPage> {
@@ -91,5 +94,10 @@ export class MainPage {
   async entryAd() {
     await this.entryAdLink.click();
     return new EntryAdPage(this.page);
+  }
+
+  async floatingMenu() {
+    await this.floatingMenuLink.click();
+    return new FloatingMenuPage(this.page);
   }
 }
