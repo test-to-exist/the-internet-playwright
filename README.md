@@ -16,6 +16,12 @@ npx playwright install-deps
 npx playwright install
 ```
 
+Then copy the example.env to the .env file
+
+```
+cp example.env .env
+```
+
 Then to run tests, run the command:
 
 ```
