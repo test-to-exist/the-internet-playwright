@@ -10,6 +10,7 @@ import { DropdownPage } from '@pages/dropdown-page';
 import { DynamicContentPage } from '@pages/dynamic-content-page';
 import { EntryAdPage } from '@pages/entry-ad-page';
 import { FloatingMenuPage } from '@pages/floating-menu-page';
+import { ForgotPasswordPage } from './reset-password-page';
 
 export class MainPage {
   readonly page: Page;
@@ -27,6 +28,7 @@ export class MainPage {
   readonly dynamicContentLink: Locator;
   readonly entryAdLink: Locator;
   readonly floatingMenuLink: Locator;
+  readonly forgotPasswordLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -44,6 +46,7 @@ export class MainPage {
     this.dynamicContentLink = page.getByRole('link', { name: 'Dynamic Content' });
     this.entryAdLink = page.getByRole('link', { name: 'Entry Ad' });
     this.floatingMenuLink = page.getByRole('link', { name: 'Floating Menu' });
+    this.forgotPasswordLink = page.getByRole('link', { name: 'Forgot Password' });
   }
 
   async abTest(): Promise<ABTestPage> {
@@ -99,5 +102,10 @@ export class MainPage {
   async floatingMenu() {
     await this.floatingMenuLink.click();
     return new FloatingMenuPage(this.page);
+  }
+
+  async forgotPassword() {
+    await this.forgotPasswordLink.click();
+    return new ForgotPasswordPage(this.page);
   }
 }
