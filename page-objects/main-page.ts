@@ -11,6 +11,7 @@ import { DynamicContentPage } from '@pages/dynamic-content-page';
 import { EntryAdPage } from '@pages/entry-ad-page';
 import { FloatingMenuPage } from '@pages/floating-menu-page';
 import { ForgotPasswordPage } from './reset-password-page';
+import { LoginPage } from './login-page';
 
 export class MainPage {
   readonly page: Page;
@@ -29,6 +30,7 @@ export class MainPage {
   readonly entryAdLink: Locator;
   readonly floatingMenuLink: Locator;
   readonly forgotPasswordLink: Locator;
+  readonly formAuthenticationLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -47,6 +49,7 @@ export class MainPage {
     this.entryAdLink = page.getByRole('link', { name: 'Entry Ad' });
     this.floatingMenuLink = page.getByRole('link', { name: 'Floating Menu' });
     this.forgotPasswordLink = page.getByRole('link', { name: 'Forgot Password' });
+    this.formAuthenticationLink = page.getByRole('link', { name: 'Form Authentication' });
   }
 
   async abTest(): Promise<ABTestPage> {
@@ -107,5 +110,10 @@ export class MainPage {
   async forgotPassword() {
     await this.forgotPasswordLink.click();
     return new ForgotPasswordPage(this.page);
+  }
+
+  async formAuthentication() {
+    await this.formAuthenticationLink.click();
+    return new LoginPage(this.page);
   }
 }
