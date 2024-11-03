@@ -10,8 +10,9 @@ import { DropdownPage } from '@pages/dropdown-page';
 import { DynamicContentPage } from '@pages/dynamic-content-page';
 import { EntryAdPage } from '@pages/entry-ad-page';
 import { FloatingMenuPage } from '@pages/floating-menu-page';
-import { ForgotPasswordPage } from './reset-password-page';
-import { LoginPage } from './login-page';
+import { ForgotPasswordPage } from '@pages/reset-password-page';
+import { LoginPage } from '@pages/login-page';
+import { NestedFrames } from '@pages/nested-frames-page';
 
 export class MainPage {
   readonly page: Page;
@@ -31,6 +32,7 @@ export class MainPage {
   readonly floatingMenuLink: Locator;
   readonly forgotPasswordLink: Locator;
   readonly formAuthenticationLink: Locator;
+  readonly nestedFramesLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -50,6 +52,7 @@ export class MainPage {
     this.floatingMenuLink = page.getByRole('link', { name: 'Floating Menu' });
     this.forgotPasswordLink = page.getByRole('link', { name: 'Forgot Password' });
     this.formAuthenticationLink = page.getByRole('link', { name: 'Form Authentication' });
+    this.nestedFramesLink = page.getByRole('link', { name: 'Nested Frames' });
   }
 
   async abTest(): Promise<ABTestPage> {
@@ -115,5 +118,10 @@ export class MainPage {
   async formAuthentication() {
     await this.formAuthenticationLink.click();
     return new LoginPage(this.page);
+  }
+
+  async nestedFrames() {
+    await this.nestedFramesLink.click();
+    return new NestedFrames(this.page);
   }
 }
