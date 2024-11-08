@@ -36,9 +36,14 @@ const config: PlaywrightTestConfig = {
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-
+    geolocation: {
+      longitude: Number.parseFloat(process.env.LONGITUDE),
+      latitude: Number.parseFloat(process.env.LATITUDE),
+    },
+    permissions: ['geolocation'],
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
+    video: 'on',
     launchOptions: {
       slowMo: 1000,
     },

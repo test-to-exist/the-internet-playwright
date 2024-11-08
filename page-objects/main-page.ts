@@ -13,6 +13,7 @@ import { FloatingMenuPage } from '@pages/floating-menu-page';
 import { ForgotPasswordPage } from '@pages/reset-password-page';
 import { LoginPage } from '@pages/login-page';
 import { NestedFrames } from '@pages/nested-frames-page';
+import { GeolocationPage } from './geolocation-page';
 
 export class MainPage {
   readonly page: Page;
@@ -33,6 +34,7 @@ export class MainPage {
   readonly forgotPasswordLink: Locator;
   readonly formAuthenticationLink: Locator;
   readonly nestedFramesLink: Locator;
+  readonly geolocationLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -53,6 +55,7 @@ export class MainPage {
     this.forgotPasswordLink = page.getByRole('link', { name: 'Forgot Password' });
     this.formAuthenticationLink = page.getByRole('link', { name: 'Form Authentication' });
     this.nestedFramesLink = page.getByRole('link', { name: 'Nested Frames' });
+    this.geolocationLink = page.getByRole('link', { name: 'Geolocation' });
   }
 
   async abTest(): Promise<ABTestPage> {
@@ -123,5 +126,10 @@ export class MainPage {
   async nestedFrames() {
     await this.nestedFramesLink.click();
     return new NestedFrames(this.page);
+  }
+
+  async geolocation() {
+    await this.geolocationLink.click();
+    return new GeolocationPage(this.page);
   }
 }
