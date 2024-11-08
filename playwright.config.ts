@@ -43,7 +43,6 @@ const config: PlaywrightTestConfig = {
     permissions: ['geolocation'],
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
-    video: 'on',
     launchOptions: {
       slowMo: 1000,
     },
