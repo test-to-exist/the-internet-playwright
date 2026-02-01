@@ -13,7 +13,11 @@ export class ChallengingDomPage {
     this.thirdButton = page.locator('a.button').nth(2);
   }
 
-  getCellFromTheTable(rowIdx: number, cellIdx: number): Locator {
-    return this.page.getByRole('row').nth(rowIdx).getByRole('cell').nth(cellIdx);
+  getColumnHeader(name: string) : Locator {
+    return this.page.getByRole('columnheader', { name: name});
+  }
+
+  getCell(name: string) : Locator {
+    return this.page.getByRole('cell', { name: name}).first();
   }
 }

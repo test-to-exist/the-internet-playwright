@@ -19,20 +19,21 @@ test.describe('Challenging Dom Tests', () => {
   });
 
   test('The table contains specific data', async ({ challengingDomPage }) => {
-    expect(await challengingDomPage.getCellFromTheTable(0, 0).innerText()).toBe('Lorem');
-    expect(await challengingDomPage.getCellFromTheTable(0, 1).innerText()).toBe('Ipsum');
-    expect(await challengingDomPage.getCellFromTheTable(0, 2).innerText()).toBe('Dolor');
-    expect(await challengingDomPage.getCellFromTheTable(0, 3).innerText()).toBe('Sit');
-    expect(await challengingDomPage.getCellFromTheTable(0, 4).innerText()).toBe('Amet');
-    expect(await challengingDomPage.getCellFromTheTable(0, 5).innerText()).toBe('Diceret');
-    expect(await challengingDomPage.getCellFromTheTable(0, 6).innerText()).toBe('Action');
-
-    expect(await challengingDomPage.getCellFromTheTable(1, 0).innerText()).toBe('Iuvaret0');
-    expect(await challengingDomPage.getCellFromTheTable(1, 1).innerText()).toBe('Apeirian0');
-    expect(await challengingDomPage.getCellFromTheTable(1, 2).innerText()).toBe('Adipisci0');
-    expect(await challengingDomPage.getCellFromTheTable(1, 3).innerText()).toBe('Definiebas0');
-    expect(await challengingDomPage.getCellFromTheTable(1, 4).innerText()).toBe('Consequuntur0');
-    expect(await challengingDomPage.getCellFromTheTable(1, 5).innerText()).toBe('Phaedrum0');
-    expect(await challengingDomPage.getCellFromTheTable(1, 6).innerText()).toBe('edit delete');
+    
+    await expect(challengingDomPage.getColumnHeader('Lorem')).toBeVisible();
+    await expect(challengingDomPage.getColumnHeader('Ipsum')).toBeVisible();
+    await expect(challengingDomPage.getColumnHeader('Dolor')).toBeVisible();
+    await expect(challengingDomPage.getColumnHeader('Sit')).toBeVisible();
+    await expect(challengingDomPage.getColumnHeader('Amet')).toBeVisible();
+    await expect(challengingDomPage.getColumnHeader('Diceret')).toBeVisible();
+    await expect(challengingDomPage.getColumnHeader('Action')).toBeVisible();
+    
+    await expect(challengingDomPage.getCell('Iuvaret0')).toBeVisible();
+    await expect(challengingDomPage.getCell('Apeirian0')).toBeVisible();
+    await expect(challengingDomPage.getCell('Adipisci0')).toBeVisible();
+    await expect(challengingDomPage.getCell('Definiebas0')).toBeVisible();
+    await expect(challengingDomPage.getCell('Consequuntur0')).toBeVisible();
+    await expect(challengingDomPage.getCell('Phaedrum0')).toBeVisible();
+    await expect(challengingDomPage.getCell('edit delete')).toBeVisible();
   });
 });
