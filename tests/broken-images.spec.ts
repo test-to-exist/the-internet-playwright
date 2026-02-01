@@ -7,6 +7,9 @@ const test = base.extend<{ brokenImagesPage: BrokenImagesPage }>({
     await page.goto(process.env.BASE_URL);
     const mainPage = new MainPage(page);
     const brokenImagesPage = await mainPage.brokenImages();
+    if(test.info().project.name === 'firefox') {
+      await page.waitForEvent('load');
+    }
     use(brokenImagesPage);
   },
 });
