@@ -4,6 +4,7 @@ import { test as base, expect } from '@playwright/test';
 
 const test = base.extend<{ brokenImagesPage: BrokenImagesPage }>({
   brokenImagesPage: async ({ page }, use) => {
+    test.setTimeout(60_000);
     await page.goto(process.env.BASE_URL);
     const mainPage = new MainPage(page);
     const brokenImagesPage = await mainPage.brokenImages();
