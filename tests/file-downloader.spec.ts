@@ -2,7 +2,7 @@ import { test,  expect } from "@playwright/test";
 import * as fs from 'fs'
 import * as appRootPath from 'app-root-path';
 import * as path from 'path';
-import * as uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 test.describe('File Downloader Tests', () => {
   let filePath: string;
@@ -21,7 +21,7 @@ test.describe('File Downloader Tests', () => {
     if (!fs.existsSync(downloadDir)) {
       fs.mkdirSync(downloadDir, { recursive: true });
     }
-    filePath = path.join(downloadDir, uuid.v4() + '.txt');
+    filePath = path.join(downloadDir, uuidv4() + '.txt');
     await download.saveAs(filePath);
     
     await page.waitForTimeout(5000);
