@@ -11,7 +11,7 @@ site with automated e2e tests using playwright.
 To run the test you would need to first to install packages and install playwright:
 
 ```
-pnpm install
+npm install
 npx playwright install-deps
 npx playwright install
 ```
